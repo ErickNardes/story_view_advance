@@ -46,6 +46,7 @@ class StoryVideo extends StatefulWidget {
   final Widget? loadingWidget;
   final Widget? errorWidget;
   final bool isAutoPlayAndPause;
+  final BoxFit? fit;
   // New callback to expose VideoPlayerController
   final Function(VideoPlayerController)? onControllerCreated;
   StoryVideo(
@@ -56,6 +57,7 @@ class StoryVideo extends StatefulWidget {
     this.errorWidget,
     this.onControllerCreated, // New parameter for the callback
     this.isAutoPlayAndPause = true,
+    this.fit,
   }) : super(key: key ?? UniqueKey());
 
   static StoryVideo url(
@@ -63,6 +65,7 @@ class StoryVideo extends StatefulWidget {
     StoryController? controller,
     Map<String, dynamic>? requestHeaders,
     Key? key,
+    BoxFit fit = BoxFit.cover,
     Widget? loadingWidget,
     Widget? errorWidget,
     Function(VideoPlayerController)? onControllerCreated,
@@ -136,11 +139,9 @@ class StoryVideoState extends State<StoryVideo> {
   Widget getContentView() {
     if (widget.videoLoader.state == LoadState.success &&
         playerController!.value.isInitialized) {
-      return Center(
-        child: AspectRatio(
-          aspectRatio: playerController!.value.aspectRatio,
-          child: VideoPlayer(playerController!),
-        ),
+      return AspectRatio(
+        aspectRatio: playerController!.value.aspectRatio,
+        child: VideoPlayer(playerController!),
       );
     }
 
