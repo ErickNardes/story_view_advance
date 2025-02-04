@@ -63,6 +63,7 @@ class StoryVideo extends StatefulWidget {
     StoryController? controller,
     Map<String, dynamic>? requestHeaders,
     Key? key,
+    BoxFit fit = BoxFit.fill,
     Widget? loadingWidget,
     Widget? errorWidget,
     Function(VideoPlayerController)? onControllerCreated,
@@ -137,9 +138,13 @@ class StoryVideoState extends State<StoryVideo> {
     if (widget.videoLoader.state == LoadState.success &&
         playerController!.value.isInitialized) {
       return Center(
-        child: AspectRatio(
-          aspectRatio: playerController!.value.aspectRatio,
-          child: VideoPlayer(playerController!),
+        child: FittedBox(
+          fit: BoxFit.contain,
+          child: SizedBox(
+            width: playerController!.value.size.width,
+            height: playerController!.value.size.height,
+            child: VideoPlayer(playerController!),
+          ),
         ),
       );
     }
