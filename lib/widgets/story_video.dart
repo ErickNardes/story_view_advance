@@ -46,7 +46,6 @@ class StoryVideo extends StatefulWidget {
   final Widget? loadingWidget;
   final Widget? errorWidget;
   final bool isAutoPlayAndPause;
-  final BoxFit? fit;
   // New callback to expose VideoPlayerController
   final Function(VideoPlayerController)? onControllerCreated;
   StoryVideo(
@@ -57,7 +56,6 @@ class StoryVideo extends StatefulWidget {
     this.errorWidget,
     this.onControllerCreated, // New parameter for the callback
     this.isAutoPlayAndPause = true,
-    this.fit,
   }) : super(key: key ?? UniqueKey());
 
   static StoryVideo url(
