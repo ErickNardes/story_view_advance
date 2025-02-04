@@ -137,14 +137,12 @@ class StoryVideoState extends State<StoryVideo> {
   Widget getContentView() {
     if (widget.videoLoader.state == LoadState.success &&
         playerController!.value.isInitialized) {
-      return Center(
-        child: FittedBox(
-          fit: BoxFit.contain,
-          child: SizedBox(
-            width: playerController!.value.size.width,
-            height: playerController!.value.size.height,
-            child: VideoPlayer(playerController!),
-          ),
+      return FittedBox(
+        fit: BoxFit.contain,
+        child: SizedBox(
+          width: playerController!.value.size.width,
+          height: playerController!.value.size.height,
+          child: VideoPlayer(playerController!),
         ),
       );
     }
