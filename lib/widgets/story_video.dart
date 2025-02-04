@@ -65,7 +65,7 @@ class StoryVideo extends StatefulWidget {
     StoryController? controller,
     Map<String, dynamic>? requestHeaders,
     Key? key,
-    BoxFit fit = BoxFit.cover,
+    BoxFit fit = BoxFit.fill,
     Widget? loadingWidget,
     Widget? errorWidget,
     Function(VideoPlayerController)? onControllerCreated,
